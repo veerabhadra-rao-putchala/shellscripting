@@ -25,7 +25,7 @@ pkginstall()
         echo -e "$G $1 package is already installed $N" | tee -a $LOGS_FILE
     else
         echo
-        echo -e "$R $1 package not installed, $N installing now ...$N"
+        echo -e "$R $1 package not installed, $N installing now ...$N" | tee -a $LOGS_FILE
         dnf install $1 -y
         if [ $? -eq 0 ]
         then
