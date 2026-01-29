@@ -22,10 +22,10 @@ pkginstall()
     dnf list $1 --installed  &> /dev/null
     if [ $? -eq 0 ]
     then   
-        echo -e "$Y $1 package is already installed $N" | tee -a $LOGS_FILE
+        echo -e "$G $1 package is already installed $N" | tee -a $LOGS_FILE
     else
         echo
-        echo -e "$R $1 package not installed, $N installing now ..."
+        echo -e "$R $1 package not installed, $N installing now ...$N"
         dnf install $1 -y
         if [ $? -eq 0 ]
         then
