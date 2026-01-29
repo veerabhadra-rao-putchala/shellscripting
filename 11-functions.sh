@@ -12,7 +12,7 @@ pkginstall()
     dnf install $1 -y
     if [ $? -eq 0 ]
     then
-        echo "Installing $1 ... SUCESSS"
+        echo "Installing $1 ... SUCCESSS"
     else
         echo "Installing $1 ... FAILURE"
     fi
