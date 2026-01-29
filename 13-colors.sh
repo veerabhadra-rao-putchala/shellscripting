@@ -22,16 +22,16 @@ pkginstall()
     dnf list $1 --installed  &> /dev/null
     if [ $? -eq 0 ]
     then   
-        echo "$Y $1 package is already installed $N" | tee -a $LOGS_FILE
+        echo -e "$Y $1 package is already installed $N" | tee -a $LOGS_FILE
     else
         echo
-        echo "$R $1 package not installed, $N installing now ..."
+        echo -e "$R $1 package not installed, $N installing now ..."
         dnf install $1 -y
         if [ $? -eq 0 ]
         then
-            echo "$G Installing $1 ... SUCCESS" | tee -a $LOGS_FILE
+            echo -e "$G Installing $1 ... SUCCESS" | tee -a $LOGS_FILE
         else
-            echo "$R Installing $1 ... FAILURE" | tee -a $LOGS_FILE
+            echo -e "$R Installing $1 ... FAILURE" | tee -a $LOGS_FILE
         fi 
     fi
 }
@@ -40,4 +40,4 @@ for package in $@ # sudo sh 14-loops.sh nginx mysql nodejs
 do
     pkginstall $package   # &>>$LOGS_FILE
 done
-echo "$Y =============================$G FINISHED ========================= $Y" | tee -a $LOGS_FILE
+echo -e "$Y ============================= $G FINISHED $Y========================= $N" | tee -a $LOGS_FILE
