@@ -9,11 +9,12 @@ fi
 
 pkginstall()
 {
-    dnf list $1 --installed
+    dnf list $1 --installed  &> /dev/null
     if [ $? -eq 0 ]
     then   
         echo "$1 package is already installed"
     else
+        echo
         echo "$1 installing ..."
         dnf install $1 -y
         if [ $? -eq 0 ]
