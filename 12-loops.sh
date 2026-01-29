@@ -20,7 +20,7 @@ pkginstall()
         echo "$1 package is already installed" | tee -a $LOGS_FILE
     else
         echo
-        echo "$1 installing ..."
+        echo "$1 package not installed, installing now ..."
         dnf install $1 -y
         if [ $? -eq 0 ]
         then
@@ -35,3 +35,4 @@ for package in $@ # sudo sh 14-loops.sh nginx mysql nodejs
 do
     pkginstall $package   # &>>$LOGS_FILE
 done
+echo "============================= FINISHED =========================" | tee -a $LOGS_FILE
