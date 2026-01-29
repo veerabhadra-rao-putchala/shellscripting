@@ -7,12 +7,16 @@ if [ $USERID -ne 0 ]; then
     exit 1
 fi
 
-echo "Installing Nginx"
-dnf install nginx -y
+pkginstall()
+{
+    dnf install $1 -y
+    if [ $? -eq 0 ]
+        echo "Installing $1 ... SUCESSS"
+    else
+        echo "Installing $1 ... FAILURE"
+    fi
+}
 
-if [ $? -ne 0 ]; then
-    echo "Installing Nginx ... FAILURE"
-    exit 1
-else
-    echo "Installing Nginx ... SUCCESS"
-fi
+pkginstall nginx
+pkginstall mysql
+pkginstall nodejs
